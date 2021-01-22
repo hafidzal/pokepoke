@@ -1,0 +1,2 @@
+export const CAPTURED = 'CAPTURED';
+export const RECENT_CAPTURE = 'RECENT_CAPTURE';
