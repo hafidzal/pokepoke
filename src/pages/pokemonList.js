@@ -14,15 +14,24 @@ export const PokemonList = () => {
     let history = useHistory();
 
     const renderOwned = (name) => {
-        let pokeNames = ownedPokemon.map(p => p[0].name);
-        // console.log('poke names: ', pokeNames, 'name: ', name, ' include? ', pokeNames.includes(name));
-     
-        if(pokeNames.includes(name)){
-            return (
-                <button className="px-6 py-1 bg-blue-200 text-blue-500 text-xs rounded-xl focus:outline-none">
-                    Owned
-                </button>
-            )
+        
+        if(ownedPokemon !== null){
+
+            let pokeNames = ownedPokemon.map(p => p[0].name);
+
+            if(pokeNames.includes(name)){
+                return (
+                    <button className="px-6 py-1 bg-blue-200 text-blue-500 text-xs rounded-xl focus:outline-none">
+                        Owned
+                    </button>
+                )
+            } else {
+                return (
+                    <button className="px-6 py-1 bg-red-200 text-red-500 text-base rounded-xl focus:outline-none">
+                        Not owned
+                    </button>
+                )
+            }
         } else {
             return (
                 <button className="px-6 py-1 bg-red-200 text-red-500 text-base rounded-xl focus:outline-none">
@@ -30,6 +39,7 @@ export const PokemonList = () => {
                 </button>
             )
         }
+        
     }
 
     if (loading) return <p>Still loading..</p>;
