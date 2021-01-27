@@ -8,7 +8,7 @@ const PokemonContext = createContext();
 
 const PokemonProvider = (props) => {
   const [state, dispatch] = usePokemonReducer();
-  const { pokemon, pokemonNickname, recentPokemon, capturedPokemons, openModal, recentCapturedPokemon, onSubmit } = state;
+  const { pokemon, pokemonNickname, recentPokemon, capturedPokemons, openModal, openButton, recentCapturedPokemon, onSubmit } = state;
 
   const setCapturedPokemon = (pokemonNickname) => () => dispatch({ type: CAPTURED, pokemonNickname });
   const setRecentCapturedPokemon = (recentPokemon) => () => dispatch({ type: RECENT_CAPTURE, recentPokemon });
@@ -21,6 +21,7 @@ const PokemonProvider = (props) => {
     setCapturedPokemon,
     setRecentCapturedPokemon,
     openModal,
+    openButton,
     recentCapturedPokemon,
     onSubmit
   };

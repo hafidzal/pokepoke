@@ -4,10 +4,10 @@ import { CAPTURED, RECENT_CAPTURE } from './actions';
 const setRecentCapturedPokemon = (recentPokemon, state) => {
     const ok = true;
     const arrCaptured = [];
-    console.log('state recent: ', state);
     if(ok){
         return ({
             openModal: true,
+            openButton: true,
             capturedPokemons: state.capturedPokemons,
             // recentCapturedPokemon: recentPokemon,
             recentCapturedPokemon: [...arrCaptured, recentPokemon]
@@ -46,5 +46,6 @@ export const usePokemonReducer = () =>
     recentPokemon: null,
     capturedPokemons: [],
     openModal: false,
+    openButton: false,
     recentCapturedPokemon: []
   });

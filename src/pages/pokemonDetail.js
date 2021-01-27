@@ -10,7 +10,7 @@ export const PokemonDetail = () => {
     const history = useHistory();
 
     const { data, loading, error } = useQuery(pokemonDetailQuery, {variables: { "name":  location.pokemonName}});
-    const { capturedPokemons, setRecentCapturedPokemon, setCapturedPokemon, openModal } = useContext(PokemonContext);
+    const { capturedPokemons, setRecentCapturedPokemon, setCapturedPokemon, openModal, openButton } = useContext(PokemonContext);
 
     const [pokemonNickname, setPokemonNickname] = useState('');
 
@@ -22,7 +22,7 @@ export const PokemonDetail = () => {
     if (error) return <p>There is an error!</p>;
 
     const renderModal = () => {
-        console.log('captured: ', capturedPokemons);
+        // console.log('captured: ', capturedPokemons);
         if(openModal == true){
             return (
                 <div className="">
@@ -32,6 +32,15 @@ export const PokemonDetail = () => {
                             <button className="ml-4 bg-green-300 text-green-600 px-6 rounded" onClick={setCapturedPokemon(pokemonNickname)}>Add</button>
                         </div>
                 </div>
+            )
+        }
+    }
+
+    const renderButton = () => {
+        // console.log('captured: ', capturedPokemons);
+        if(openButton == true){
+            return (
+                <button className="ml-2 mt-2 bg-blue-200 text-blue-600 text-white px-6 py-2 rounded" onClick={() => history.push("/my-pokemon-list")}>Go To My Pokemon List</button>
             )
         }
     }
@@ -48,8 +57,7 @@ export const PokemonDetail = () => {
                             <div className="font-medium text-2xl my-4">{data.pokemon.name}</div> 
                             <button className="bg-yellow-200 text-yellow-700 px-6 py-2 rounded-xl" onClick={setRecentCapturedPokemon(data.pokemon)}>Catch The Pokemon</button>
                             {renderModal()}
-                            <button className="mt-2 bg-blue-200 text-blue-600 text-white px-6 py-2 rounded" onClick={() => history.push("/my-pokemon-list")}>Go To My Pokemon List</button>
-
+                            {renderButton()}
                         </div>
                     </div>
             </div>

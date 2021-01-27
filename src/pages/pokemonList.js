@@ -9,13 +9,15 @@ import { PokemonContext } from '../context/PokemonContext';
 export const PokemonList = () => {
     const { data, loading, error } = useQuery(pokemonListQuery);
     // const { recentCapturedPokemon , capturedPokemons, setRecentCapturedPokemon, setCapturedPokemon, openModal } = useContext(PokemonContext);
-    const [ownedPokemon, setOwnedPokemon] = useState(JSON.parse(localStorage.getItem('storage')));
+    const [ownedPokemon, setOwnedPokemon] = useState();
 
     let history = useHistory();
 
     const renderOwned = (name) => {
-        
-        if(ownedPokemon !== null){
+        const ownedPokemon = JSON.parse(localStorage.getItem('storage'));
+        console.log('owned: ',  ownedPokemon);
+
+        if(ownedPokemon.length !== 0){
 
             let pokeNames = ownedPokemon.map(p => p[0].name);
 
