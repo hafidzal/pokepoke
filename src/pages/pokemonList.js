@@ -15,18 +15,25 @@ export const PokemonList = () => {
 
     const renderOwned = (name) => {
         const ownedPokemon = JSON.parse(localStorage.getItem('storage'));
-        console.log('owned: ',  ownedPokemon);
+        // console.log('owned: ',  ownedPokemon);
+        if(ownedPokemon){
+            if(ownedPokemon.length !== 0){
 
-        if(ownedPokemon.length !== 0){
+                let pokeNames = ownedPokemon.map(p => p[0].name);
 
-            let pokeNames = ownedPokemon.map(p => p[0].name);
-
-            if(pokeNames.includes(name)){
-                return (
-                    <button className="px-6 py-1 bg-blue-200 text-blue-500 text-xs rounded-xl focus:outline-none">
-                        Owned
-                    </button>
-                )
+                if(pokeNames.includes(name)){
+                    return (
+                        <button className="px-6 py-1 bg-blue-200 text-blue-500 text-xs rounded-xl focus:outline-none">
+                            Owned
+                        </button>
+                    )
+                } else {
+                    return (
+                        <button className="px-6 py-1 bg-red-200 text-red-500 text-base rounded-xl focus:outline-none">
+                            Not owned
+                        </button>
+                    )
+                }
             } else {
                 return (
                     <button className="px-6 py-1 bg-red-200 text-red-500 text-base rounded-xl focus:outline-none">

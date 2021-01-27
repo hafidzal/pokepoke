@@ -16,15 +16,14 @@ export const MyPokemonList = () => {
     
     useEffect((a) => {
         // setPokeList(pokeList)
-        console.log('clicked: ', clicked, 'poke: ', pokeList);
+        // console.log('clicked: ', clicked, 'poke: ', pokeList);
       }, [clicked]);
 
     const release = (nick) => {
-        console.log('ok');
         for(let i = 0; i < pokeList.length; i++) {
             if(pokeList[i].nickname === nick) {
                 pokeList.splice(i, 1);
-                console.log('poke: ', pokeList);
+                // console.log('poke: ', pokeList);
                 setPokeList(pokeList);
             }
         }
@@ -38,7 +37,7 @@ export const MyPokemonList = () => {
     // if (error) return <p>There is an error!</p>;
 
     if (true) {
-        console.log('captured in list hoho: ', pokeList, ' length: ', pokeList.length);
+        // console.log('captured in list hoho: ', pokeList, ' length: ', pokeList.length);
         return (
             <>
                 {/* <Container className="mt-4"> */}
